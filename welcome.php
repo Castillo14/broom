@@ -34,7 +34,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     font-size: 10px;
   }
 .bg-gradient-primary {
-    background-color: #a03220;
+    background-color: var(--indigo);
     background-size: cover;
 }
 .accordion {
@@ -54,6 +54,7 @@ form.user .form-control-user {
     font-size: .8rem;
     border-radius: 10rem;
     padding: 0.5rem 1rem;
+
 }
 .btn{
       padding: 0.375rem .75rem;
@@ -61,7 +62,25 @@ form.user .form-control-user {
 .bg-white {
     background-color: #ffff00!important;
 }
+.sidebar {
+    width: 20.5rem;
+    min-height: 100vh;
+}
+a {
+    color: #f8f9fc;
+    text-decoration: none;
+}
 
+element.style {
+}
+#wrapper #content-wrapper #content {
+    flex: 1 0 auto;
+    background-blend-mode: inherit;
+    background-color: yellow;
+}
+.form-control{
+  width:322px;
+}
 </style> 
 
 </head>
@@ -84,20 +103,30 @@ form.user .form-control-user {
        
       <p>
           <!-- <a href="reset-password.php" class="btn btn-warning">Reset Your Password</a> -->
-          <a href="logout.php" class="btn btn-danger">Sign Out of Your Account</a>
+          <i class="fas fa-user-circle"> <?php echo htmlspecialchars($_SESSION["username"]); ?>.</i>
+
+        
+
+          <center><a href="#">Edit Profile</a></center>
+       
       </p>
       
       </a>
 
       <!-- Divider -->
-      <hr class="sidebar-divider my-0">
-
-     
-
-
-     
+      <hr class="sidebar-divider my-0"><br>
+      <center>
+            <a href="#">Settings</a>
+           
+      </center>
+          <br>
       <!-- Divider -->
       <hr class="sidebar-divider">
+        <center>
+              <a href="logout.php"><i class="fas fa-sign-out-alt"></i><b>Log out</a></b>
+        </center> <br>
+      <hr class="sidebar-divider my-1">
+
 
       <!-- Heading
       <div class="sidebar-heading">
@@ -122,9 +151,9 @@ form.user .form-control-user {
             <a class="collapse-item active" href="blank.html">Blank Page</a>
           </div>
         </div>
-      </li>
+      </li> -->
 
-      -->
+     
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
@@ -247,7 +276,12 @@ form.user .form-control-user {
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
-        <div class="container-fluid">
+
+        <body class="bg-gradient-primary">
+
+        <div class="container">
+
+        
         <h6>Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>. Welcome !</h6>
         <br>
           <ul class="nav nav-tabs">
@@ -255,9 +289,9 @@ form.user .form-control-user {
               <a class="nav-link active" href="#"><i class="fas fa-motorcycle"></i>Motorcycle</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#"><i class="fas fa-store"></i>Stores</a>
+              <a class="nav-link active" href="#"><i class="fas fa-store"></i>Stores</a>
             </li>
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown active">
               <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-truck"></i>Auto Service</a>
               <div class="dropdown-menu">
@@ -358,13 +392,13 @@ form.user .form-control-user {
       <!-- End of Main Content -->
 
       <!-- Footer -->
-      <footer class="sticky-footer bg-white">
+      <!-- <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
             <span>Copyright &copy; Your Website 2020</span>
           </div>
         </div>
-      </footer>
+      </footer> -->
       <!-- End of Footer -->
 
   <!-- Bootstrap core JavaScript-->

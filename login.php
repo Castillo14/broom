@@ -65,17 +65,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $_SESSION["username"] = $username;  
                             $_SESSION["role"] = $role;                          
                             
-
-                            //if user role is 1, redirect to admin page
-                          if ($_SESSION["role"] == 1) {
-                            header("Location:admin/admin_home.php");
-                          }
-                          //if user role is 0, redirect to user page
-                          if ($_SESSION["role"] == 0) {
-                            header("Location:user/user_home.php");
-                          }
-                        
-                                                  // Redirect user to welcome page
+                          $role=$_SESSION['user']['role'];
+                          //Redirecting User Based on Role
+                        switch($role){
+                         case 'user':
+                         header('location:user/user_home.php');
+                         break;
+                         case 'moderator':
+                         header('location:rider/rider_home.php');
+                         break;
+                         case 'admin':
+                         header('location:admin/admin_home.php');
+                         break;
+                        }
+                            // Redirect user to welcome page
                             header("location: welcome.php");
                         } else{
                             // Display an error message if password is not valid
@@ -159,7 +162,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     ">
 
                     <div class="form-group" <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>>
-                      <input type="email" class="form-control form-control-user"name="username" aria-describedby="emailHelp" placeholder="Email Address / Contact No..." value="<?php echo $username; ?>">
+                      <input type="text" class="form-control form-control-user"name="username" aria-describedby="emailHelp" placeholder="Email Address / Contact No..." value="<?php echo $username; ?>">
 
                       <span class="help-block"><?php echo $username_err; ?></span>
 
